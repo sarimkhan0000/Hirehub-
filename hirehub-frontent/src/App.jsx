@@ -103,7 +103,7 @@ function App() {
     if (candidateData.resume) data.append("resume", candidateData.resume);
 
     try {
-      const res = await fetch("http://localhost:8080/api/applications", { method: "POST", body: data });
+      const res = await fetch("https://hirehub-backend-sarim.onrender.com/api/applications", { method: "POST", body: data });
       if (res.ok) {
         fetchApplications();
         showToast(`Application submitted successfully for ${applyingJob.title}!`);
