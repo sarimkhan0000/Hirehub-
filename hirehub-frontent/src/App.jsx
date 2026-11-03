@@ -40,7 +40,7 @@ function App() {
   const fetchJobs = async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:8080/api/jobs");
+      const res = await fetch("https://hirehub-backend-sarim.onrender.com/api/jobs");
       if (res.ok) setJobs((await res.json()).slice().reverse());
     } catch (e) {
       console.error(e);
@@ -51,7 +51,7 @@ function App() {
 
   const fetchApplications = async () => {
     try {
-      const res = await fetch("http://localhost:8080/api/applications");
+      const res = await fetch("https://hirehub-backend-sarim.onrender.com/api/applications");
       if (res.ok) setApplications((await res.json()).slice().reverse());
     } catch (e) {
       console.error(e);
@@ -66,7 +66,7 @@ function App() {
   const handlePostJob = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:8080/api/jobs", {
+      const res = await fetch("https://hirehub-backend-sarim.onrender.com/api/jobs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -83,7 +83,7 @@ function App() {
   const handleDeleteJob = async (id, title) => {
     if (!window.confirm(`Delete "${title}"?`)) return;
     try {
-      const res = await fetch(`http://localhost:8080/api/jobs/${id}`, { method: "DELETE" });
+      const res = await fetch(`https://hirehub-backend-sarim.onrender.com/api/jobs/${id}`, { method: "DELETE" });
       if (res.ok) { fetchJobs(); showToast("Job removed."); }
     } catch (e) { console.error(e); }
   };
@@ -115,7 +115,7 @@ function App() {
 
   const handleStatusChange = async (appId, newStatus) => {
     try {
-      const res = await fetch(`http://localhost:8080/api/applications/${appId}/status`, {
+      const res = await fetch(`https://hirehub-backend-sarim.onrender.com/api/applications/${appId}/status`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
@@ -386,7 +386,7 @@ function App() {
                     <span>💼 Exp: <strong style={{ color: theme.text }}>{app.experience}</strong></span>
                   </div>
                   {app.resumePath ? (
-                    <a href={`http://localhost:8080/uploads/${app.resumePath}`} target="_blank" rel="noopener noreferrer" className="resume-link">
+                    <a href={`https://hirehub-backend-sarim.onrender.com/uploads/${app.resumePath}`} target="_blank" rel="noopener noreferrer" className="resume-link">
                       📄 View / Download Resume
                     </a>
                   ) : (
