@@ -39,10 +39,14 @@ public class JobController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteJob(@PathVariable Long id) {
         try {
+            if (!jobRepository.existsById(id)) {
+                return ResponseEntity.notFound().build();
+            }
             jobRepository.deleteById(id);
             return ResponseEntity.ok("Job deleted successfully");
         } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("Error deleting job");
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body("Error deleting job: " + e.getMessage());
         }
     }
 }
