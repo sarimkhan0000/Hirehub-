@@ -38,6 +38,7 @@ html, body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px 20px;
+  box-sizing: border-box;
 }
 
 /* Sidebar: Filter Openings */
@@ -51,6 +52,7 @@ html, body {
   padding: 20px;
   position: sticky;
   top: 24px;
+  box-sizing: border-box;
 }
 
 .sidebar-title {
@@ -111,6 +113,7 @@ html, body {
   border: 1px solid #334155;
   border-radius: 8px;
   padding: 16px;
+  box-sizing: border-box;
 }
 
 .recruiter-box h4 {
@@ -146,6 +149,16 @@ html, body {
   flex: 1 1 0%;
   min-width: 0;
   width: 100%;
+  box-sizing: border-box;
+}
+
+/* Job Cards Container & Individual Cards */
+.job-cards-wrapper,
+.jobs-list,
+.job-card {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Search Box Grid */
@@ -158,6 +171,7 @@ html, body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 16px 20px;
+  box-sizing: border-box;
 }
 
 .search-input-field {
@@ -166,6 +180,7 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  box-sizing: border-box;
 }
 
 .search-input-field span {
@@ -183,6 +198,7 @@ html, body {
   color: #ffffff;
   font-size: 14px;
   outline: none;
+  box-sizing: border-box;
 }
 
 .search-input-field input:focus {
@@ -208,34 +224,58 @@ html, body {
    3. MOBILE & TABLET RESPONSIVE OVERRIDES
    =================================================== */
 @media screen and (max-width: 900px) {
+  html, body, #root {
+    overflow-x: hidden !important;
+  }
+
   .main-layout {
     flex-direction: column;
-    padding: 16px;
-    gap: 20px;
+    padding: 16px 14px;
+    gap: 16px;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .sidebar-card {
-    width: 100%;
-    min-width: 0;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
     position: static;
+    margin: 0;
   }
 
   .main-layout > *:not(.sidebar-card) {
-    width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Job cards mobile fluid alignment */
+  [class*="card"], [class*="job"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .search-box-grid {
     flex-direction: column;
-    padding: 16px;
+    padding: 14px;
     gap: 12px;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .search-input-field {
-    width: 100%;
-    min-width: 0;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .search-input-field input {
+    width: 100% !important;
   }
 
   .btn-clear {
-    width: 100%;
+    width: 100% !important;
   }
 }
