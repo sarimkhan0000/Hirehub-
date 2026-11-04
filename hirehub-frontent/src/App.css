@@ -24,7 +24,7 @@ html, body {
 }
 
 /* ===================================================
-   2. EXISTING COMPONENTS & RESPONSIVE FIXES
+   2. EXISTING COMPONENTS & DEFAULT STYLES
    =================================================== */
 .counter {
   font-size: 16px;
@@ -96,13 +96,6 @@ html, body {
   flex-grow: 1;
   width: 100%;
   max-width: 100%;
-}
-
-@media (max-width: 1024px) {
-  #center {
-    padding: 32px 16px 24px;
-    gap: 18px;
-  }
 }
 
 #next-steps {
@@ -197,9 +190,61 @@ html, body {
 }
 
 /* ===================================================
-   3. MOBILE SCREEN ADJUSTMENTS (Tablets & Phones)
+   3. HIREHUB CORE RESPONSIVE & LAYOUT STYLES
+   =================================================== */
+.main-layout {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar-card {
+  width: 280px;
+  min-width: 260px;
+  background: #ffffff;
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 12px;
+  padding: 20px;
+  height: fit-content;
+  box-sizing: border-box;
+}
+
+.search-box-grid {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-input-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.search-input-field input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border, #cbd5e1);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* ===================================================
+   4. MOBILE & TABLET MEDIA QUERIES (Stacking Fix)
    =================================================== */
 @media (max-width: 1024px) {
+  #center {
+    padding: 32px 16px 24px;
+    gap: 18px;
+  }
+
   #next-steps {
     flex-direction: column;
     text-align: center;
@@ -231,5 +276,38 @@ html, body {
 
   #spacer {
     height: 48px;
+  }
+
+  /* Main layout desktop 2-column ko vertical 1-column banayega */
+  .main-layout {
+    flex-direction: column !important;
+    padding: 12px 14px !important;
+    gap: 16px !important;
+  }
+
+  .sidebar-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    position: static !important;
+  }
+
+  .main-layout > *:not(.sidebar-card) {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .search-box-grid {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .search-input-field {
+    width: 100% !important;
+  }
+
+  .btn-clear {
+    width: 100% !important;
   }
 }
