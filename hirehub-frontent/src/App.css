@@ -279,3 +279,88 @@ html, body {
     width: 100% !important;
   }
 }
+/* ===================================================
+   ULTIMATE MOBILE HORIZONTAL SCROLL LOCK
+   =================================================== */
+
+/* 1. Mobile browsers ko side-scroll karne se bilkul freeze karega */
+html, body {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  touch-action: pan-y !important; /* Left-right swipe ko band karega */
+}
+
+#root {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+/* 2. Koi bhi text ya badge screen ko stretch nahi kar sakega */
+* {
+  max-width: 100% !important;
+}
+
+@media screen and (max-width: 768px) {
+  /* Navbar / Header ko screen ke andar lock karega */
+  header, nav, .navbar, .header {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  /* Search row aur inputs ko stack karega */
+  .search-box-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 12px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .search-input-field {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .search-input-field input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Main content layout */
+  .main-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 12px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .sidebar-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* Job cards aur unke andar ke buttons ko mobile screen mein bandhega */
+  [class*="job"], [class*="card"] {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Agar title ya tags lambe hon toh text wrap karega bajaye screen phulane ke */
+  h1, h2, h3, h4, p, span, a {
+    word-break: break-word !important;
+  }
+}
