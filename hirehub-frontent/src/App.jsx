@@ -145,35 +145,36 @@ function App() {
   };
 
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: theme.bg, color: theme.text, fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ minHeight: "100vh", backgroundColor: theme.bg, color: theme.text, fontFamily: "'Inter', sans-serif", overflowX: "hidden", width: "100%", maxWidth: "100vw" }}>
       <style>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { width: 100%; max-width: 100vw; overflow-x: hidden; }
         .toast-banner { position: fixed; bottom: 24px; right: 24px; background: #1E293B; color: #FFFFFF; padding: 12px 20px; border-radius: 8px; font-size: 14px; font-weight: 500; box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 1000; border-left: 4px solid #2563EB; }
-        .navbar { background: ${theme.cardBg}; border-bottom: 1px solid ${theme.border}; position: sticky; top: 0; z-index: 40; transition: background 0.3s; }
-        .nav-inner { max-width: 1180px; margin: 0 auto; height: 64px; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; }
+        .navbar { background: ${theme.cardBg}; border-bottom: 1px solid ${theme.border}; position: sticky; top: 0; z-index: 40; transition: background 0.3s; width: 100%; }
+        .nav-inner { max-width: 1180px; width: 100%; margin: 0 auto; min-height: 64px; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
         .brand-logo { display: flex; align-items: center; gap: 10px; cursor: pointer; }
         .brand-box { width: 34px; height: 34px; background: #1D4ED8; color: #FFFFFF; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; }
         .brand-name { font-size: 20px; font-weight: 700; color: ${theme.text}; }
         .brand-name span { color: #3B82F6; }
-        .nav-tabs { display: flex; gap: 8px; }
+        .nav-tabs { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
         .nav-tab-btn { background: transparent; border: none; padding: 8px 14px; border-radius: 6px; font-size: 13.5px; font-weight: 600; color: ${theme.subText}; cursor: pointer; display: flex; align-items: center; gap: 6px; }
         .nav-tab-btn.active { background: ${darkMode ? "#27272A" : "#EFF6FF"}; color: #3B82F6; }
         .tab-counter { background: ${darkMode ? "#3F3F46" : "#DBEAFE"}; color: ${darkMode ? "#F8FAFC" : "#1E40AF"}; padding: 1px 7px; border-radius: 999px; font-size: 11.5px; font-weight: 700; }
         .btn-theme { background: ${darkMode ? "#27272A" : "#F1F5F9"}; color: ${theme.text}; border: 1px solid ${theme.border}; padding: 7px 12px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
         .btn-recruiter { background: #2563EB; color: #FFFFFF; border: none; padding: 9px 16px; border-radius: 6px; font-size: 13.5px; font-weight: 600; cursor: pointer; }
         .btn-recruiter:hover { background: #1D4ED8; }
-        .search-strip { background: ${theme.cardBg}; border-bottom: 1px solid ${theme.border}; padding: 24px 20px; transition: background 0.3s; }
-        .search-container { max-width: 1180px; margin: 0 auto; }
+        .search-strip { background: ${theme.cardBg}; border-bottom: 1px solid ${theme.border}; padding: 24px 20px; transition: background 0.3s; width: 100%; }
+        .search-container { max-width: 1180px; width: 100%; margin: 0 auto; }
         .search-heading { font-size: 20px; font-weight: 700; color: ${theme.text}; margin-bottom: 4px; }
         .search-subheading { font-size: 13.5px; color: ${theme.subText}; margin-bottom: 16px; }
-        .search-box-grid { display: grid; grid-template-columns: 1.5fr 1fr auto; gap: 12px; background: ${darkMode ? "#000000" : "#F9FAFB"}; padding: 8px; border: 1px solid ${theme.border}; border-radius: 8px; }
-        .search-input-field { display: flex; align-items: center; background: ${theme.inputBg}; border: 1px solid ${theme.inputBorder}; border-radius: 6px; padding: 0 12px; }
+        .search-box-grid { display: grid; grid-template-columns: 1.5fr 1fr auto; gap: 12px; background: ${darkMode ? "#000000" : "#F9FAFB"}; padding: 8px; border: 1px solid ${theme.border}; border-radius: 8px; width: 100%; }
+        .search-input-field { display: flex; align-items: center; background: ${theme.inputBg}; border: 1px solid ${theme.inputBorder}; border-radius: 6px; padding: 0 12px; min-width: 0; }
         .search-input-field span { color: ${theme.subText}; font-size: 13px; font-weight: 600; margin-right: 8px; white-space: nowrap; }
-        .search-input-field input { width: 100%; border: none; outline: none; padding: 10px 4px; font-size: 14px; color: ${theme.text}; background: transparent; }
-        .btn-clear { background: ${theme.cardBg}; border: 1px solid ${theme.border}; color: ${theme.text}; padding: 0 18px; border-radius: 6px; font-size: 13.5px; font-weight: 600; cursor: pointer; }
-        .main-layout { max-width: 1180px; width: 100%; margin: 24px auto; padding: 0 20px; display: grid; grid-template-columns: 260px 1fr; gap: 24px; align-items: start; }
+        .search-input-field input { width: 100%; min-width: 0; border: none; outline: none; padding: 10px 4px; font-size: 14px; color: ${theme.text}; background: transparent; }
+        .btn-clear { background: ${theme.cardBg}; border: 1px solid ${theme.border}; color: ${theme.text}; padding: 10px 18px; border-radius: 6px; font-size: 13.5px; font-weight: 600; cursor: pointer; }
+        .main-layout { max-width: 1180px; width: 100%; margin: 24px auto; padding: 0 20px; display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; align-items: start; }
         .ats-container { max-width: 1180px; width: 100%; margin: 24px auto; padding: 0 20px; }
-        .sidebar-card { background: ${theme.cardBg}; border: 1px solid ${theme.border}; border-radius: 8px; padding: 20px; transition: background 0.3s; }
+        .sidebar-card { background: ${theme.cardBg}; border: 1px solid ${theme.border}; border-radius: 8px; padding: 20px; transition: background 0.3s; width: 100%; }
         .sidebar-title { font-size: 14px; font-weight: 700; color: ${theme.text}; text-transform: uppercase; letter-spacing: 0.4px; padding-bottom: 12px; border-bottom: 1px solid ${theme.border}; margin-bottom: 14px; }
         .filter-group-label { font-size: 13px; font-weight: 600; color: ${theme.subText}; margin-bottom: 10px; display: block; }
         .filter-list { display: flex; flex-direction: column; gap: 8px; }
@@ -183,24 +184,24 @@ function App() {
         .recruiter-box { background: ${darkMode ? "#000000" : "#F8FAFC"}; border: 1px solid ${theme.border}; border-radius: 6px; padding: 14px; }
         .recruiter-box h4 { font-size: 13.5px; color: ${theme.text}; margin-bottom: 4px; }
         .recruiter-box p { font-size: 12.5px; color: ${theme.subText}; line-height: 1.4; margin-bottom: 10px; }
-        .feed-top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+        .feed-top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px; }
         .feed-count { font-size: 15px; font-weight: 600; color: ${theme.text}; }
         .feed-count span { color: #3B82F6; font-weight: 700; }
-        .job-list { display: flex; flex-direction: column; gap: 12px; }
-        .job-item { background: ${theme.cardBg}; border: 1px solid ${theme.border}; border-radius: 8px; padding: 20px 22px; transition: background 0.3s; }
-        .job-row-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
-        .job-main-info { display: flex; gap: 14px; align-items: flex-start; }
+        .job-list { display: flex; flex-direction: column; gap: 12px; width: 100%; min-width: 0; }
+        .job-item { background: ${theme.cardBg}; border: 1px solid ${theme.border}; border-radius: 8px; padding: 20px 22px; transition: background 0.3s; width: 100%; overflow-wrap: break-word; }
+        .job-row-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+        .job-main-info { display: flex; gap: 14px; align-items: flex-start; min-width: 0; flex: 1; }
         .company-initial { width: 44px; height: 44px; border-radius: 6px; background: ${darkMode ? "#27272A" : "#F3F4F6"}; border: 1px solid ${theme.border}; color: ${theme.text}; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 17px; flex-shrink: 0; }
-        .job-title { font-size: 17px; font-weight: 700; color: ${theme.text}; margin-bottom: 3px; }
+        .job-title { font-size: 17px; font-weight: 700; color: ${theme.text}; margin-bottom: 3px; word-break: break-word; }
         .job-company-name { font-size: 14px; font-weight: 500; color: ${theme.subText}; }
-        .job-meta-row { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 14px; padding-top: 12px; border-top: 1px solid ${theme.border}; font-size: 13.5px; color: ${theme.text}; }
+        .job-meta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; padding-top: 12px; border-top: 1px solid ${theme.border}; font-size: 13.5px; color: ${theme.text}; }
         .meta-label { color: ${theme.subText}; font-weight: 500; }
         .meta-val { font-weight: 600; color: ${theme.text}; }
-        .type-badge { background: ${darkMode ? "#27272A" : "#EFF6FF"}; color: #3B82F6; border: 1px solid ${theme.border}; padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; }
-        .job-description { margin-top: 12px; font-size: 13.5px; color: ${theme.subText}; line-height: 1.55; white-space: pre-line; }
-        .job-footer { margin-top: 16px; display: flex; justify-content: space-between; align-items: center; }
+        .type-badge { background: ${darkMode ? "#27272A" : "#EFF6FF"}; color: #3B82F6; border: 1px solid ${theme.border}; padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+        .job-description { margin-top: 12px; font-size: 13.5px; color: ${theme.subText}; line-height: 1.55; white-space: pre-line; word-break: break-word; }
+        .job-footer { margin-top: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
         .job-id-text { font-size: 12px; color: ${theme.subText}; }
-        .footer-btns { display: flex; gap: 10px; align-items: center; }
+        .footer-btns { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
         .btn-delete { background: ${theme.cardBg}; color: #EF4444; border: 1px solid ${theme.border}; padding: 7px 12px; border-radius: 6px; font-size: 12.5px; font-weight: 600; cursor: pointer; }
         .btn-apply { background: #2563EB; color: #FFFFFF; border: none; padding: 8px 18px; border-radius: 6px; font-size: 13.5px; font-weight: 600; cursor: pointer; }
         .btn-applied { background: ${darkMode ? "#064E3B" : "#ECFDF5"}; color: #10B981; border: 1px solid ${theme.border}; padding: 8px 16px; border-radius: 6px; font-size: 13.5px; font-weight: 600; }
@@ -219,10 +220,23 @@ function App() {
         .form-group { display: flex; flex-direction: column; gap: 5px; }
         .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .form-label { font-size: 13px; font-weight: 600; color: ${theme.text}; }
-        .form-control { padding: 9px 12px; border: 1px solid ${theme.inputBorder}; background: ${theme.inputBg}; color: ${theme.text}; border-radius: 6px; font-size: 13.5px; outline: none; font-family: inherit; }
+        .form-control { padding: 9px 12px; border: 1px solid ${theme.inputBorder}; background: ${theme.inputBg}; color: ${theme.text}; border-radius: 6px; font-size: 13.5px; outline: none; font-family: inherit; width: 100%; }
         .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px; padding-top: 14px; border-top: 1px solid ${theme.border}; }
         .btn-cancel { background: ${theme.cardBg}; border: 1px solid ${theme.border}; color: ${theme.text}; padding: 9px 16px; border-radius: 6px; font-size: 13.5px; font-weight: 600; cursor: pointer; }
         .resume-link { display: inline-flex; align-items: center; gap: 6px; color: #3B82F6; font-weight: 600; text-decoration: none; background: ${darkMode ? "#1E293B" : "#EFF6FF"}; padding: 4px 10px; border-radius: 6px; font-size: 13px; border: 1px solid ${theme.border}; }
+
+        /* ================= MOBILE RESPONSIVE FIX ================= */
+        @media (max-width: 850px) {
+          .nav-inner { height: auto; padding: 12px 16px; }
+          .search-strip { padding: 16px; }
+          .search-box-grid { grid-template-columns: 1fr; gap: 10px; }
+          .main-layout { grid-template-columns: 1fr; padding: 0 16px; margin: 16px auto; gap: 16px; }
+          .ats-container { padding: 0 16px; margin: 16px auto; }
+          .job-item { padding: 16px; }
+          .form-row-2 { grid-template-columns: 1fr; }
+          .job-footer { flex-direction: column; align-items: stretch; }
+          .footer-btns { width: 100%; justify-content: flex-end; }
+        }
       `}</style>
 
       {toastMessage && <div className="toast-banner">{toastMessage}</div>}
@@ -299,7 +313,7 @@ function App() {
               </div>
             </aside>
 
-            <section>
+            <section style={{ minWidth: 0, width: "100%" }}>
               <div className="feed-top-bar">
                 <div className="feed-count">Showing <span>{filteredJobs.length}</span> Job Openings</div>
               </div>
