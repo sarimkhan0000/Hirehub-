@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HireHub</title>
     
     <style>
@@ -17,15 +17,35 @@
         margin: 0 !important;
         padding: 0 !important;
         overflow-x: hidden !important;
-        position: relative;
-        background-color: #0f172a; /* Agar dark theme hai toh black gap match karega */
       }
 
       #root {
         width: 100% !important;
         max-width: 100vw !important;
         overflow-x: hidden !important;
-        min-height: 100vh;
+      }
+
+      /* MOBILE SCREEN FIX: Jo cheezein screen se bahar bhag rahi hain unhe screen mein fit karega */
+      @media (max-width: 768px) {
+        div, section, main, article, form, input, button, select, textarea {
+          max-width: 100% !important;
+          min-width: 0 !important;
+        }
+
+        /* Fixed width ko override karke responsive banayega */
+        [class*="card"], [class*="job"], [class*="container"], [class*="wrapper"], [class*="box"] {
+          width: 100% !important;
+          max-width: 100% !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+        }
+
+        /* 2-column layout ko mobile par 1-column banayega */
+        [class*="grid"], [class*="list"] {
+          display: flex !important;
+          flex-direction: column !important;
+          width: 100% !important;
+        }
       }
     </style>
   </head>
