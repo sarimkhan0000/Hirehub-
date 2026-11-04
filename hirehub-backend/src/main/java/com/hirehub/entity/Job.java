@@ -1,11 +1,10 @@
 package com.hirehub.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "jobs")
@@ -33,13 +32,12 @@ public class Job {
     @Column(columnDefinition = "TEXT")
     private String description;
     
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", shape = JsonFormat.Shape.STRING)
-    private LocalDateTime postedAt;
+    private String postedAt;
 
     @PrePersist
     protected void onCreate() {
-        if (this.postedAt == null) {
-            this.postedAt = LocalDateTime.now();
+        if (this.postedAt == null || this.postedAt.isEmpty()) {
+            this.postedAt = LocalDate.now().toString(); // e.g. "2026-11-04"
         }
     }
 }

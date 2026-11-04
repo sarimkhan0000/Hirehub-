@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -25,8 +25,8 @@ public class JobController {
     @PostMapping
     public ResponseEntity<?> createJob(@RequestBody Job job) {
         try {
-            if (job.getPostedAt() == null) {
-                job.setPostedAt(LocalDateTime.now());
+            if (job.getPostedAt() == null || job.getPostedAt().isEmpty()) {
+                job.setPostedAt(LocalDate.now().toString());
             }
             Job savedJob = jobRepository.save(job);
             return ResponseEntity.ok(savedJob);
